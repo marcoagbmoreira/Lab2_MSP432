@@ -1,0 +1,1 @@
+"./main.obj" "./startup_msp432p401r_ccs.obj" "./system_msp432p401r.obj" "./driverlib/MSP432P4xx/ADC14.obj" "./driverlib/MSP432P4xx/Timer32.obj" "../msp432p401r.cmd" -l"libc.a" -l"D:\Dropbox (Pessoal)\2016-1\Sistemas Embarcados\MSP432_DriverLib_3_10_00_09\driverlib\MSP432P4xx\ccs\msp432p4xx_driverlib.lib" 
