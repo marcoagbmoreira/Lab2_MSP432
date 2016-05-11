@@ -18,7 +18,6 @@ ORDERED_OBJS += \
 "../msp432p401r.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"libc.a" \
--l"D:\Dropbox (Pessoal)\2016-1\Sistemas Embarcados\MSP432_DriverLib_3_10_00_09\driverlib\MSP432P4xx\ccs\msp432p4xx_driverlib.lib" \
 
 -include ../makefile.init
 

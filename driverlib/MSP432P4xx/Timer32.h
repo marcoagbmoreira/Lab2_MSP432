@@ -13,6 +13,7 @@
 #include <msp.h>
 void initTimer32();
 void delay_msTimer32(uint32_t delay);
+void delay_usTimer32(uint32_t delay);
 void startTimer32();
 uint32_t getValueTimer32();
 void setIRQTimer32();

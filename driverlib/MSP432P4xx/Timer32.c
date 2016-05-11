@@ -12,12 +12,14 @@
 void initTimer32()
 {
 
+	//TIMER32_1->CONTROL |= 0x66;
 	TIMER32_1->CONTROL |= (1<<7); // enable timer
+	TIMER32_1->CONTROL |= (1<<5); // interrupt
 	TIMER32_1->CONTROL |= (1<<6); // periodic mode
 	TIMER32_1->CONTROL |= (1<<2);   // prescale,clock is divided by 16 = 01b
 	TIMER32_1->CONTROL |= (1<<1);  // size 32bit counter = 1b
-	TIMER32_1->CONTROL |= (1<<0); //0b = wrapping mode
-
+	TIMER32_1->CONTROL &= ~(1<<0); //0b = wrapping mode
+	setIRQTimer32();
 
 }
 // seta o valor de atraso em ms
@@ -26,7 +28,13 @@ void delay_msTimer32(uint32_t delay)
 	uint32_t newClock = (SysClock/Prescaler);
 	TIMER32_1->LOAD = newClock*0.001*delay;
 	startTimer32();
-	while(getValueTimer32()!=0);
+
+}
+void delay_usTimer32(uint32_t delay)
+{
+	uint32_t newClock = (SysClock/Prescaler);
+		TIMER32_1->LOAD = newClock*0.000001*delay;
+		startTimer32();
 }
 void startTimer32()
 {

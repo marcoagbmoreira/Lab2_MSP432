@@ -12,4 +12,5 @@
 	<createSlaveProjects value=""/>
 	<templateProperties value="id=com.ti.common.project.core.emptyProjectWithMainTemplate_msp432,"/>
 	<origin value="D:/Dropbox (Pessoal)/2016-1/Sistemas Embarcados/Lab02"/>
+	<isTargetManual value="false"/>
 </projectOptions>
