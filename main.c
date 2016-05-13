@@ -7,25 +7,30 @@
 #include "msp.h"
 #include "Timer32.h"
 #include "ADC14.h"
-
+static volatile uint_fast8_t resultsBuffer[0x80];
+static volatile uint8_t resPos;
 void main(void)
 {
 	
     WDTCTL = WDTPW | WDTHOLD;           // Stop watchdog timer
    initTimer32();
-   delay_usTimer32(50); // atraso de 50us
-   	initADC14();
-    P1DIR |= (1<<0); // output P1.0
+	initADC14();
 
+    P2DIR |=(1<<2); // output P2.2
     //P5.5 tertiary module function (ADC)
     P5->SEL0 |= (1<<5); // p5.5 as adc input
     P5->SEL1 |= (1<<5);
     P5->IES |= 0x0A;
     P5DIR &=~(1<<5);
+    P2OUT ^= BIT2; // toogle output
+
+    delay_usTimer32(50); // atraso de 50us
+
+
     while(1)
     {
-  //  delay_msTimer32(500); // em ms
-	//  P1OUT ^= BIT0; // toogle output
+
+
 	};
 }
 void ADC14_IRQHandler(void)
@@ -37,9 +42,9 @@ void ADC14_IRQHandler(void)
 void T32_INT1_IRQHandler(void)
 {
 
-	P1OUT ^= BIT0; // toogle output
+
 	startConversion();
-	float value = readADC14();
+	resultsBuffer[resPos++] = readADC14();
 	clearIRQFlagTimer32();
 }
 

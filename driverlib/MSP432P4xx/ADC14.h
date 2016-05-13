@@ -9,7 +9,7 @@
 #define DRIVERLIB_MSP432P4XX_ADC14_H_
 #include <msp.h>
 void initADC14();
-float readADC14();
+uint_fast8_t readADC14();
 void clearIRQFlagADC14();
 void startConversion();
 #endif /* DRIVERLIB_MSP432P4XX_ADC14_H_ */

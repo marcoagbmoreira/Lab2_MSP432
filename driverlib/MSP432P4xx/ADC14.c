@@ -29,13 +29,14 @@ void initADC14()
 	//  NVIC->ISER[0] |= (1<<24);
 
 }
-float readADC14()
+uint_fast8_t readADC14()
 {
 
-	uint8_t result = ADC14->MEM[0];
-	float normalizedResult = 0;
-	normalizedResult = (result * 3.3) / 255;
-	return  normalizedResult;
+	uint_fast8_t result = ADC14->MEM[0];
+	//float normalizedResult = 0;
+	//normalizedResult = (result * 3.3) / 255;
+	//result = normalizedResult;
+	return  result;
 }
 void startConversion()
 {
